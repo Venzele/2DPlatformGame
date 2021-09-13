@@ -2,21 +2,15 @@ using UnityEngine;
 
 public class WayEnemy : MonoBehaviour
 {
-    [SerializeField] private ContactFilter2D _filter;
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private float _speed;
+    [SerializeField] private ContactFilter2D _filter;
 
-    private Rigidbody2D _rigidbody;
-    private SpriteRenderer _spriteRenderer;
     private int _distanceToObject = 1;
     private bool _isDirectionToRight = true;
 
     private RaycastHit2D[] _results = new RaycastHit2D[1];
-
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
 
     private void FixedUpdate()
     {

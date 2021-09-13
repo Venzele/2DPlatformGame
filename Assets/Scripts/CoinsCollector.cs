@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CollectingCoins : MonoBehaviour
+public class CoinsCollector : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {

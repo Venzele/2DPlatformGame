@@ -117,6 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284cd5e18dfa0274691f58ecee4cdd4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 6481168403861503566}
+  _spriteRenderer: {fileID: 6481168403861503564}
+  _speed: 2
   _filter:
     useTriggers: 0
     useLayerMask: 1
@@ -131,7 +134,6 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  _speed: 2
 --- !u!61 &6481168403861503561
 BoxCollider2D:
   m_ObjectHideFlags: 0

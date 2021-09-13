@@ -2,28 +2,23 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] private GroundChecker _checkGround;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private int _speed;
     [SerializeField] private int _jumpForce;
 
-    private CheckGround _checkGround;
-    private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
-    private Rigidbody2D _rigidbody;
-
-    private void Start()
-    {
-        _checkGround = FindObjectOfType<CheckGround>();
-        _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
+    private const string _idle = "Idle";
+    private const string _walk = "Walk";
+    private const string _jump = "Jump";
 
     private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.Space) && _checkGround.IsGround)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpForce);
-            _animator.Play("Jump");
+            _animator.Play(_jump);
         }
     }
 
@@ -34,18 +29,18 @@ public class Movement : MonoBehaviour
             transform.Translate(_speed * Time.deltaTime, 0, 0);
             _spriteRenderer.flipX = false;
             if (_checkGround.IsGround)
-                _animator.Play("Walk");
+                _animator.Play(_walk);
         }
         else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
             transform.Translate(_speed * Time.deltaTime * -1, 0, 0);
             _spriteRenderer.flipX = true;
             if (_checkGround.IsGround)
-                _animator.Play("Walk");
+                _animator.Play(_walk);
         }
         else if (_checkGround.IsGround)
         {
-            _animator.Play("Idle");
+            _animator.Play(_idle);
         }
     }
 }
