@@ -9,16 +9,16 @@ public class Movement : MonoBehaviour
     [SerializeField] private int _speed;
     [SerializeField] private int _jumpForce;
 
-    private const string _idle = "Idle";
-    private const string _walk = "Walk";
-    private const string _jump = "Jump";
+    private const string Idle = "Idle";
+    private const string Walk = "Walk";
+    private const string Jump = "Jump";
 
     private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.Space) && _checkGround.IsGround)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpForce);
-            _animator.Play(_jump);
+            _animator.Play(Jump);
         }
     }
 
@@ -29,18 +29,18 @@ public class Movement : MonoBehaviour
             transform.Translate(_speed * Time.deltaTime, 0, 0);
             _spriteRenderer.flipX = false;
             if (_checkGround.IsGround)
-                _animator.Play(_walk);
+                _animator.Play(Walk);
         }
         else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
             transform.Translate(_speed * Time.deltaTime * -1, 0, 0);
             _spriteRenderer.flipX = true;
             if (_checkGround.IsGround)
-                _animator.Play(_walk);
+                _animator.Play(Walk);
         }
         else if (_checkGround.IsGround)
         {
-            _animator.Play(_idle);
+            _animator.Play(Idle);
         }
     }
 }

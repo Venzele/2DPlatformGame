@@ -31,7 +31,7 @@ public class WayEnemy : MonoBehaviour
             _rigidbody.velocity = transform.right * _speed;
             _spriteRenderer.flipX = false;
         }
-        else if (!_isDirectionToRight)
+        else
         {
             _rigidbody.velocity = transform.right * -_speed;
             _spriteRenderer.flipX = true;
